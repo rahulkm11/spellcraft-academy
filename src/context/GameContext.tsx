@@ -82,6 +82,23 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         rating,
         playedAt: Date.now(),
       };
+      const spell = spells.find(sp => sp.id === s.currentSpellId);
+      const duration = Math.floor((Date.now() - s.sessionStartTime) / 1000);
+      trackEvent({
+        event_type: 'spell_completed',
+        player_name: s.playerName,
+        spell_id: s.currentSpellId || undefined,
+        book_index: spell?.bookIndex,
+        scenarios_completed: 3,
+        session_duration_seconds: duration,
+      });
+      trackEvent({
+        event_type: 'spell_rated',
+        player_name: s.playerName,
+        spell_id: s.currentSpellId || undefined,
+        book_index: spell?.bookIndex,
+        rating,
+      });
       return { ...s, spellRecords: [...s.spellRecords, record] };
     });
   }, []);
