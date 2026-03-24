@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import AdminLoginScreen from "./screens/AdminLoginScreen";
+import DisclaimerFooter from "./components/DisclaimerFooter";
 
 const queryClient = new QueryClient();
 
