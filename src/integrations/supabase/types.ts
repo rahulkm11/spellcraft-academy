@@ -14,7 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      analytics_events: {
+        Row: {
+          book_index: number | null
+          created_at: string | null
+          event_type: string
+          id: string
+          player_name: string
+          rating: number | null
+          scenarios_completed: number | null
+          session_duration_seconds: number | null
+          spell_id: string | null
+        }
+        Insert: {
+          book_index?: number | null
+          created_at?: string | null
+          event_type: string
+          id?: string
+          player_name: string
+          rating?: number | null
+          scenarios_completed?: number | null
+          session_duration_seconds?: number | null
+          spell_id?: string | null
+        }
+        Update: {
+          book_index?: number | null
+          created_at?: string | null
+          event_type?: string
+          id?: string
+          player_name?: string
+          rating?: number | null
+          scenarios_completed?: number | null
+          session_duration_seconds?: number | null
+          spell_id?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
