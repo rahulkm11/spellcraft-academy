@@ -59,6 +59,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   const setPlayerName = useCallback((name: string) => {
     setState(s => ({ ...s, playerName: name, sessionStartTime: Date.now() }));
+    trackEvent({ event_type: 'session_start', player_name: name });
   }, []);
 
   const selectBook = useCallback((bookIndex: number | null) => {
