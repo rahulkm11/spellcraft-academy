@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useGame } from '@/context/GameContext';
 import { getSpellById } from '@/data/spells';
 import type { Scenario } from '@/data/spells';
