@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useGame } from '@/context/GameContext';
 import MagicMascot from '@/components/MagicMascot';
 import { Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function WelcomeScreen() {
   const [name, setName] = useState('');
