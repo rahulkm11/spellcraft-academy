@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useState, useCallback, useRef, useEffect } from 'react';
+import { trackEvent } from '@/lib/analytics';
+import { spells } from '@/data/spells';
 
 interface SpellRecord {
   spellId: string;
@@ -57,6 +59,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   const setPlayerName = useCallback((name: string) => {
     setState(s => ({ ...s, playerName: name, sessionStartTime: Date.now() }));
+    trackEvent({ event_type: 'session_start', player_name: name });
   }, []);
 
   const selectBook = useCallback((bookIndex: number | null) => {
@@ -79,6 +82,23 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         rating,
         playedAt: Date.now(),
       };
+      const spell = spells.find(sp => sp.id === s.currentSpellId);
+      const duration = Math.floor((Date.now() - s.sessionStartTime) / 1000);
+      trackEvent({
+        event_type: 'spell_completed',
+        player_name: s.playerName,
+        spell_id: s.currentSpellId || undefined,
+        book_index: spell?.bookIndex,
+        scenarios_completed: 3,
+        session_duration_seconds: duration,
+      });
+      trackEvent({
+        event_type: 'spell_rated',
+        player_name: s.playerName,
+        spell_id: s.currentSpellId || undefined,
+        book_index: spell?.bookIndex,
+        rating,
+      });
       return { ...s, spellRecords: [...s.spellRecords, record] };
     });
   }, []);
