@@ -96,10 +96,7 @@ export default function About() {
         {/* Contact */}
         <Section icon={Mail} title="Contact">
           <p>
-            Questions or concerns? Reach out at <strong>your-email@example.com</strong>
-          </p>
-          <p className="text-sm text-muted-foreground/60">
-            Please replace the email above with your actual contact email.
+            Questions or concerns? Reach out at <strong>rmishra@alumni.chicagobooth.edu</strong>
           </p>
         </Section>
       </div>
