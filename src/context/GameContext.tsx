@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useState, useCallback, useRef, useEffect } from 'react';
+import { trackEvent } from '@/lib/analytics';
+import { spells } from '@/data/spells';
 
 interface SpellRecord {
   spellId: string;
