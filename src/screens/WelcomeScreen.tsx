@@ -64,6 +64,12 @@ export default function WelcomeScreen() {
             maxLength={20}
             autoFocus
           />
+          <p className="text-[11px] text-muted-foreground/60 text-center">
+            Your name stays on your device only. We don't store personal information.{' '}
+            <Link to="/about" className="underline hover:text-primary transition-colors">
+              Privacy & Guide
+            </Link>
+          </p>
 
           <motion.button
             whileHover={{ scale: 1.03 }}
