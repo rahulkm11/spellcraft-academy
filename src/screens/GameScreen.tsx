@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useGame } from '@/context/GameContext';
 import { getSpellById } from '@/data/spells';
 import type { Scenario } from '@/data/spells';
@@ -32,21 +32,18 @@ export default function GameScreen() {
           <ScenarioProgress current={currentScenario} total={3} />
         </motion.div>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={`${spell.id}-${currentScenario}`}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            className="flex-1 flex flex-col"
-          >
-            <ScenarioCard
-              scenario={scenario}
-              spellName={spell.name}
-              onComplete={completeScenario}
-            />
-          </motion.div>
-        </AnimatePresence>
+        <motion.div
+          key={`${spell.id}-${currentScenario}`}
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="flex-1 flex flex-col"
+        >
+          <ScenarioCard
+            scenario={scenario}
+            spellName={spell.name}
+            onComplete={completeScenario}
+          />
+        </motion.div>
       </div>
     </div>
   );
